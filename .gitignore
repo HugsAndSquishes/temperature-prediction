@@ -3,3 +3,7 @@ data/processed/
 *.csv
 .ipynb_checkpoints/
 *.DS_Store
+
+!data/raw/README.md
+!data/processed/README.md
+!data/sample/README.md
