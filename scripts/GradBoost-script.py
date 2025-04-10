@@ -6,10 +6,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.preprocessing import StandardScaler
 import seaborn as sns
+from sklearn.ensemble import GradientBoostingRegressor
 
 # Load the dataset
 print("Loading dataset...")
-data = pd.read_csv('average-monthly-surface-temperature.csv')
+data = pd.read_csv('/content/average-monthly-surface-temperature.csv')
 
 # Display basic information about the dataset
 print("\nDataset Information:")
@@ -46,14 +47,20 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-# Train Random Forest Regressor
-print("\nTraining Random Forest Regressor...")
-rf_model = RandomForestRegressor(n_estimators=100, max_depth=15, min_samples_split=5, 
-                               min_samples_leaf=2, random_state=42, n_jobs=-1)
-rf_model.fit(X_train_scaled, y_train)
+# Replace Random Forest with Gradient Boosting
+print("\nTraining Gradient Boosting Regressor...")
+gb_model = GradientBoostingRegressor(
+    n_estimators=150,
+    learning_rate=0.1,
+    max_depth=5,
+    min_samples_split=5,
+    min_samples_leaf=2,
+    random_state=42
+)
+gb_model.fit(X_train_scaled, y_train)
 
 # Make predictions
-y_pred = rf_model.predict(X_test_scaled)
+y_pred = gb_model.predict(X_test_scaled)
 
 # Evaluate the model
 print("\nModel Evaluation:")
@@ -66,6 +73,15 @@ print(f"Mean Squared Error (MSE): {mse:.4f}")
 print(f"Root Mean Squared Error (RMSE): {rmse:.4f}")
 print(f"Mean Absolute Error (MAE): {mae:.4f}")
 print(f"R² Score: {r2:.4f}")
+
+# Add explained variance score
+from sklearn.metrics import explained_variance_score
+evs = explained_variance_score(y_test, y_pred)
+print(f"Explained Variance Score: {evs:.4f}")
+
+# Add training score
+train_score = gb_model.score(X_train_scaled, y_train)
+print(f"Training R²: {train_score:.4f}")
 
 # Visualize actual vs predicted values
 plt.figure(figsize=(10, 6))
@@ -111,6 +127,12 @@ plt.title('Residuals vs Predicted Values')
 plt.savefig('residuals_vs_predicted.png')
 plt.close()
 
+print("\nAnalysis complete! Visualizations saved as PNG files.")
 
-
-
+# Model Evaluation:
+# Mean Squared Error (MSE): 28.5299
+# Root Mean Squared Error (RMSE): 5.3413
+# Mean Absolute Error (MAE): 4.5016
+# R² Score: 0.7302
+# Explained Variance Score: 0.7302
+# Training R²: 0.7294
