@@ -1,5 +1,6 @@
 data/raw/
 data/processed/
+models/
 *.csv
 .ipynb_checkpoints/
 *.DS_Store
