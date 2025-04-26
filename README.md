@@ -1,13 +1,8 @@
-# surface temperature
+# Surface Temperature Prediction
 You can download the dataset from [Kaggle](https://www.kaggle.com/datasets/samithsachidanandan/average-monthly-surface-temperature-1940-2024/data).
 
-# File Organization
+1.  Run the notebooks/preprocessing.ipynb first
+2.  Run notebooks/modeling.ipynb next
+3.  Run all othe scripts
 
-temperature-prediction/
-    data/                   
-        raw/                      
-            average-monthly-surface-temperature.csv  
-        processed/                
-            preprocessed_data.csv
-  README.md                   
-  requirements.txt   
+  README.md
