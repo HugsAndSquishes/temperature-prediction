@@ -4,6 +4,7 @@ models/
 *.csv
 .ipynb_checkpoints/
 *.DS_Store
+*.pkl
 
 !data/raw/README.md
 !data/processed/README.md
