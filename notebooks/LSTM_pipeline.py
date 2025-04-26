@@ -80,7 +80,7 @@ class LSTMPipeline:
         y_pred, y_true = self.predict()
         mae = mean_absolute_error(y_true, y_pred)
         rmse = root_mean_squared_error(y_true, y_pred)
-        mse = mean_squared_error(y_true, linear_regression_y_pred)
+        mse = mean_squared_error(y_true, y_pred)
         r2 = r2_score(y_true, y_pred)
         return {'MAE': mae, 'RMSE': rmse, 'R2': r2m, 'MSE': mean_squared_error}
 
