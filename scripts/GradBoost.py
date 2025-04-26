@@ -10,7 +10,7 @@ from sklearn.ensemble import GradientBoostingRegressor
 
 # Load the dataset
 print("Loading dataset...")
-data = pd.read_csv('/content/average-monthly-surface-temperature.csv')
+data = pd.read_csv('../data/raw/average-monthly-surface-temperature.csv')
 
 # Display basic information about the dataset
 print("\nDataset Information:")
