@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestRegressor
@@ -10,7 +11,9 @@ from sklearn.ensemble import GradientBoostingRegressor
 
 # Load the dataset
 print("Loading dataset...")
-data = pd.read_csv('../data/raw/average-monthly-surface-temperature.csv')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+csv_path = os.path.join(BASE_DIR, '../data/raw/average-monthly-surface-temperature.csv')
+data = pd.read_csv(csv_path)
 
 # Display basic information about the dataset
 print("\nDataset Information:")
