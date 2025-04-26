@@ -174,8 +174,6 @@ tscv = TimeSeriesSplit(n_splits=5)
 # SARIMA modeling
 print("\nFitting SARIMA model...")
 
-# Determine optimal p, d, q, P, D, Q, s parameters based on ACF/PACF plots
-# For simplicity, we'll use some common values, but in practice, you'd use grid search
 p, d, q = 1, d_order, 1  # Non-seasonal components
 P, D, Q, s = 1, 1, 1, 12  # Seasonal components (s=12 for monthly data)
 
