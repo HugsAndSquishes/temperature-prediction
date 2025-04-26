@@ -3,6 +3,6 @@ You can download the dataset from [Kaggle](https://www.kaggle.com/datasets/samit
 
 1.  Run the notebooks/preprocessing.ipynb first
 2.  Run notebooks/modeling.ipynb next
-3.  Run all othe scripts
+3.  Run the other scripts
 
   README.md
